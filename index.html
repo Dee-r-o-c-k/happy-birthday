@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+     <audio id="bgMusic" src="/suprise again/music/audio_2025-11-05_00-28-12.ogg" loop></audio>
+     <div id="startScreen">
+      <h2>💖 Happy Birthday My Love 💖</h2>
+      <button id="startBtn">Click to Begin 🎶</button>
+     </div>
+    <h1>🎉 Happy Birthday, My Love 💖</h1>
+  <p>
+    You make my life brighter, my days happier, and my heart warmer.  
+    Today, I celebrate you — your laughter, your cuteness, and everything that makes you so special 💕
+  </p>
+
+  <!-- Slideshow -->
+  <div class="slideshow">
+    <div class="slides">
+      <img src="/suprise again/pictures/IMG-20251103-WA0026.jpg" alt="Memory 1">
+      <img src="/suprise again/pictures/IMG-20251104-WA0050.jpg" alt="Memory 2">
+      <img src="/suprise again/pictures/IMG-20251104-WA0053.jpg" alt="Memory 3">
+      <img src="/suprise again/pictures/IMG-20251104-WA0054.jpg" alt="Memory 4">
+      <img src="/suprise again/pictures/IMG-20251104-WA0086.jpg" alt="Memory 5">
+      <img src="/suprise again/pictures/IMG-20251104-WA0087.jpg" alt="Memory 6">
+      <img src="/suprise again/pictures/IMG-20251104-WA0088.jpg" alt="Memory 7">
+      <video src="/suprise again/video/Snapchat-955363934.mp4" muted playsinline autoplay loop></video>
+      <video src="/suprise again/video/Snapchat-911848694.mp4" muted playsinline autoplay loop></video>
+      <video src="/suprise again/video/video_2025-11-04_23-34-12.mp4" muted playsinline autoplay loop></video>
+      <video src="/suprise again/video/VID-20251104-WA0059.mp4" muted playsinline autoplay loop></video>
+    </div>
+  </div>
+
+  <button onclick="showLove(event)">Click Me 💝</button>
+  <div id="hiddenMessage">
+    <p>Heyyy! 🥰<br>
+    I love you more than words can ever express.  
+    Here’s to more smiles, cuddles, and adventures together. You are my forever person 💞 <br>
+    I pray for you today that the lord grants every of your heart desires and make you prosper in your career </p>
+  </div>
+
+  <div class="music-controls">
+    <audio id="inMusic" loop>
+      <source src="./suprise again/music/Fave-Baby-Riddim-New-Song-(TrendyBeatz.com).mp3" type="audio/mp3">
+    </audio>
+    <button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+  </div>
+
+  <footer>
+    Made with 💖 by your babe
+  </footer>
+
+  <script>
+
+    const startBtn = document.getElementById('startBtn');
+const bgMusic = document.getElementById('bgMusic');
+const startScreen = document.getElementById('startScreen');
+
+startBtn.addEventListener('click', () => {
+  bgMusic.play();
+  startScreen.style.display = 'none';
+});
+
+     const countdownEl = document.getElementById('countdown');
+    const mainContent = document.getElementById('mainContent');
+    let count = 3;
+    const countdown = setInterval(() => {
+      count--;
+      if(count > 0){
+        countdownEl.textContent = `Surprise in ${count} 🎉`;
+      } else {
+        clearInterval(countdown);
+        countdownEl.style.display = 'none';
+        mainContent.style.display = 'block';
+        startAnimations();
+      }
+    }, 1000);
+    
+    // Floating hearts
+    const colors = ['#fff','#ffb6c1','#ff69b4','#ffc0cb'];
+    for(let i=0; i<25; i++){
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random()*100 + 'vw';
+      heart.style.fontSize = Math.random()*20 + 15 + 'px';
+      heart.style.animationDuration = Math.random()*3 + 4 + 's';
+      heart.style.color = colors[Math.floor(Math.random()*colors.length)];
+      document.body.appendChild(heart);
+    }
+
+    // Balloons
+    const balloonColors = ['#ff8fab','#ffb3c6','#ffc8dd','#ffafcc','#bde0fe','#a2d2ff'];
+    for(let i=0; i<8; i++){
+      const balloon = document.createElement('div');
+      balloon.classList.add('balloon');
+      balloon.style.left = Math.random()*90 + 'vw';
+      balloon.style.background = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+      balloon.style.animationDuration = Math.random()*3 + 5 + 's';
+      document.body.appendChild(balloon);
+    }
+
+    // Show love message + sparkle effect
+    function showLove(e) {
+      document.getElementById('hiddenMessage').style.display = 'block';
+      for(let i=0; i<20; i++){
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        sparkle.style.left = (e.clientX + Math.random()*40 - 20) + 'px';
+        sparkle.style.top = (e.clientY + Math.random()*40 - 20) + 'px';
+        sparkle.style.background = ['#fff','#ff69b4','#ffd6e0'][Math.floor(Math.random()*3)];
+        document.body.appendChild(sparkle);
+        setTimeout(()=>sparkle.remove(), 1000);
+      }
+    }
+
+    // Music controls
+    const inMusic = document.getElementById('inMusic');
+    function toggleMusic() {
+      if(inMusic.paused) {
+        inMusic.play();
+      } else {
+        inMusic.pause();
+      }
+    }
+  </script>
+</body>
+</html>
